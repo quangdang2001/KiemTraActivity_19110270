@@ -27,9 +27,9 @@ public class ResultActivity extends AppCompatActivity {
         this.tienLai =  (tienGui*(laisuat/100)*(kyhan*30))/360;
         tienLai = Math.round(tienLai*100.0)/100.0;
         TextView tienLaiView = findViewById(R.id.tienlai);
-        tienLaiView.setText(String.valueOf(tienLai));
+        tienLaiView.setText(String.valueOf(tienLai) + " đ");
         TextView tongtienView = findViewById(R.id.tongtien);
-        tongtienView.setText(String.valueOf(tienLai + tienGui));
+        tongtienView.setText(String.valueOf(tienLai + tienGui)+ " đ");
     }
     public void takeAPicture(View view) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
