@@ -3,14 +3,16 @@ package com.android.s19110270;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    public static Bundle bundle = new Bundle();
     private EditText soTienGui;
     private EditText laiSuatGui;
     private EditText kyHanGui;
@@ -40,5 +42,21 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(intent,TEXT_REQUEST);
         }
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        bundle.putString("TIEN_GUI",soTienGui.getText().toString());
+        bundle.putString("LAI_SUAT",laiSuatGui.getText().toString());
+        bundle.putString("KY_HAN",kyHanGui.getText().toString());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        soTienGui.setText(bundle.getString("TIEN_GUI"));
+        laiSuatGui.setText(bundle.getString("LAI_SUAT"));
+        kyHanGui.setText(bundle.getString("KY_HAN"));
     }
 }
